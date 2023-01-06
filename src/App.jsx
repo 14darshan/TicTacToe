@@ -6,6 +6,25 @@ import { ScoreBoard } from "./components/scoreboard";
 import './App.css';
 
 const App = () => {
+ 
+  function handleCallbackResponse(response){
+  console.log("encoded:" +response.credential);
+
+  } 
+
+  useEffect(() => {
+    /**global google */
+    google.accounts.id.initialize({
+      client_id: "225789599339-md035hd93no57srq0lsc0lhdq2q7nfnm.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+  google.accounts.id.renderButton(
+    document.getElementById("signInDiv"),
+    {theme:"outline", size: "large"}
+  );
+
+
+  }, []);
 
   const WIN_CONDITIONS = [
     [0, 1, 2],
